@@ -9,7 +9,7 @@ namespace ConsoleApp
 
         private static void Main(string[] args)
         {
-            var db = new Database("localhost", 5432, "dev", "postgres", "123Mudar");
+            var db = new Database("localhost", 5432, "sample", "postgres", "123Mudar");
 
             Context = new DbContext();
             db.SetTables(Context);
