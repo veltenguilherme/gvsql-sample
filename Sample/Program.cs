@@ -9,7 +9,7 @@ namespace ConsoleApp
 
         private static void Main(string[] args)
         {
-            //informe o usuário e senha do seu provider, leia os métodos do construtor.
+            //informe o usuário e senha do seu provider, leia os parâmetros do construtor.
             var db = new Database("localhost", 5432, "sample", "postgres", "123Mudar");
 
             Context = new DbContext();
