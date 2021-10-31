@@ -1,5 +1,6 @@
 ﻿using Persistence.Controllers.Base.CustomAttributes;
 using Persistence.Models;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConsoleApp.Tables.Person
@@ -15,8 +16,26 @@ namespace ConsoleApp.Tables.Person
         [TypeInfo(DataType.TEXT_NOT_NULL)]
         public string LastName { get; set; }
 
+        [Column("sex")]
+        [TypeInfo(DataType.INTEGER_NOT_NULL)]
+        public EnmSex Sex { get; set; }
+
+        [Column("birth")]
+        [TypeInfo(DataType.DATE_NOT_NULL)]
+        public DateTime Birth { get; set; }
+
         [Column("age")]
-        [TypeInfo(DataType.INTEGER)]
+        [TypeInfo(DataType.INTEGER_NOT_NULL)]
         public int Age { get; set; }
+
+        [Column("death")]
+        [TypeInfo(DataType.DATE)]
+        public DateTime? Death { get; set; }
+    }
+
+    public enum EnmSex
+    {
+        FEMININO = 1,
+        MASCULINO
     }
 }

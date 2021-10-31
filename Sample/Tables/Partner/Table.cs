@@ -1,6 +1,6 @@
 ﻿using Persistence.Controllers;
 
-namespace ConsoleApp.Tables.User
+namespace ConsoleApp.Tables.Partner
 {
     public class Table : Table<Model>
     {

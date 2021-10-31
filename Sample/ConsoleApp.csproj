@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="gvsql" Version="1.7.9" />
+    <PackageReference Include="gvsql" Version="1.9.0" />
   </ItemGroup>
 
 </Project>
