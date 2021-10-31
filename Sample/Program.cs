@@ -12,6 +12,7 @@ namespace ConsoleApp
         {
             new Database("localhost", 5432, "sample", "postgres", "123Mudar").Create(GetSchema());
 
+            var person = InsertPerson().Result;
             var user = InsertUser().Result;
             var customer = InsertCustomer().Result;
             var partner = InsertPartner().Result;
