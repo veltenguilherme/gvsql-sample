@@ -91,7 +91,7 @@ namespace ConsoleApp
                 Code = 1,
                 UserGuid = InsertUser().Result?.Guid,
                 CustomerGuid = InsertCustomer().Result?.Guid,
-                PartnerGuid = InsertPartner().Result?.Guid
+                //PartnerGuid = InsertPartner().Result?.Guid
             });
         }
 
