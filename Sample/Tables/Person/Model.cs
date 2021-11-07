@@ -35,7 +35,7 @@ namespace ConsoleApp.Tables.Person
 
     public enum EnmSex
     {
-        FEMININO = 1,
-        MASCULINO
+        FEMALE = 1,
+        MALE
     }
 }

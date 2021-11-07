@@ -92,7 +92,7 @@ namespace ConsoleApp
                 Code = 1,
                 UserGuid = InsertUser().Result?.Guid,
                 CustomerGuid = InsertCustomer().Result?.Guid,
-                //PartnerGuid = InsertPartner().Result?.Guid
+                PartnerGuid = InsertPartner().Result?.Guid
             });
         }
 
@@ -104,7 +104,7 @@ namespace ConsoleApp
                 LastName = "Velten",
                 Birth = new DateTime(1993, 09, 14),
                 Age = DateTime.Now.Year - new DateTime(1993, 09, 14).Year,
-                Sex = Tables.Person.EnmSex.MASCULINO
+                Sex = Tables.Person.EnmSex.MALE
             });
         }
     }

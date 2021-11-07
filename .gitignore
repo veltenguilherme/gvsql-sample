@@ -1,3 +1,5 @@
 /.vs
 /Sample/obj
 /Sample/bin
+.vscode/launch.json
+.vscode/tasks.json
