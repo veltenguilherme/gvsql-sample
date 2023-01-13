@@ -19,7 +19,7 @@ namespace ConsoleApp.Models
 
         [Column("sex")]
         [SqlType(SqlTypes.INTEGER_NOT_NULL)]
-        public EnmSex Sex { get; set; }
+        public Sex Sex { get; set; }
 
         [Column("birth")]
         [SqlType(SqlTypes.DATE_NOT_NULL)]
@@ -34,7 +34,7 @@ namespace ConsoleApp.Models
         public DateTime? Death { get; set; }
     }
 
-    public enum EnmSex
+    public enum Sex
     {
         FEMALE = 1,
         MALE

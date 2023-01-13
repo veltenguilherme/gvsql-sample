@@ -110,7 +110,7 @@ namespace ConsoleApp
                 LastName = "Velten",
                 Birth = new DateTime(1993, 09, 14),
                 Age = DateTime.Now.Year - new DateTime(1993, 09, 14).Year,
-                Sex = EnmSex.MALE
+                Sex = Sex.MALE
             });
         }
     }
