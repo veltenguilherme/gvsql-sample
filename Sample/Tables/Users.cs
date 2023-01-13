@@ -1,7 +1,7 @@
-﻿using ConsoleApp.Models;
+﻿using Sample.Models;
 using Persistence.Controllers;
 
-namespace ConsoleApp.Tables
+namespace Sample.Tables
 {
     public class Users : Table<User>
     {

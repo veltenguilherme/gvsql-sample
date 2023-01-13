@@ -3,7 +3,7 @@ using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Models
+namespace Sample.Models
 {
     [Table("customer")]
     public class Customer : Model<Customer>

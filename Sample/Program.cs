@@ -1,12 +1,12 @@
-﻿using ConsoleApp.Models;
-using ConsoleApp.Tables;
-using Persistence;
+﻿using Persistence;
 using Persistence.Controllers.Base.Queries;
+using Sample.Models;
+using Sample.Tables;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace Sample
 {
     internal class Program
     {
@@ -14,7 +14,7 @@ namespace ConsoleApp
         {
             new Database(hostName: "localhost",
                          port: 5432,
-                         name: "sample",
+                         name: "gvsql_sample",
                          userName: "postgres",
                          password: "123Mudar",
                          schema: GetSchema());
@@ -63,6 +63,7 @@ namespace ConsoleApp
                 }
             };
         }
+
         private static async Task<User> InsertUser()
         {
             return await new Users().UpdateOrInsertAsync(new User()

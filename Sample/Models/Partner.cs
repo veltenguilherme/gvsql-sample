@@ -1,10 +1,9 @@
-﻿using ConsoleApp.Tables;
-using Persistence.Controllers.Base.CustomAttributes;
+﻿using Persistence.Controllers.Base.CustomAttributes;
 using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Models
+namespace Sample.Models
 {
     [Table("partner")]
     public class Partner : Model<Partner>

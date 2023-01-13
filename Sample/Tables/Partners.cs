@@ -1,7 +1,7 @@
-﻿using ConsoleApp.Models;
-using Persistence.Controllers;
+﻿using Persistence.Controllers;
+using Sample.Models;
 
-namespace ConsoleApp.Tables
+namespace Sample.Tables
 {
     public class Partners : Table<Partner>
     {
