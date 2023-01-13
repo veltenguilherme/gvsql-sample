@@ -1,12 +1,13 @@
-﻿using Persistence.Controllers.Base.CustomAttributes;
+﻿using ConsoleApp.Tables;
+using Persistence.Controllers.Base.CustomAttributes;
 using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Tables.Customer
+namespace ConsoleApp.Models
 {
-    [Table("customer")]
-    public class Model : Model<Model>
+    [Table("partner")]
+    public class Partner : Model<Partner>
     {
         [Column("nick_name")]
         [SqlType(SqlTypes.TEXT_NOT_NULL_UNIQUE)]
@@ -17,7 +18,7 @@ namespace ConsoleApp.Tables.Customer
         [SqlType(SqlTypes.GUID)]
         public Guid? PersonGuid { get; set; }
 
-        [SqlJoinType("customer", "person_fk", SqlJoinTypes.INNER)]
-        public Person.Model Person { get; set; } = new Person.Model();
+        [SqlJoinType("partner", "person_fk", SqlJoinTypes.INNER)]
+        public Person Person { get; set; } = new Person();
     }
 }

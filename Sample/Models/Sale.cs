@@ -1,12 +1,13 @@
-﻿using Persistence.Controllers.Base.CustomAttributes;
+﻿using ConsoleApp.Tables;
+using Persistence.Controllers.Base.CustomAttributes;
 using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Tables.Sale
+namespace ConsoleApp.Models
 {
     [Table("sales")]
-    public class Model : Model<Model>
+    public class Sale : Model<Sale>
     {
         [Column("code")]
         [SqlType(SqlTypes.INTEGER_NOT_NULL)]
@@ -18,7 +19,7 @@ namespace ConsoleApp.Tables.Sale
         public Guid? UserGuid { get; set; }
 
         [SqlJoinType("sales", "user_fk", SqlJoinTypes.INNER)]
-        public User.Model User { get; set; } = new User.Model();
+        public User User { get; set; } = new User();
 
         [Column("customer_fk")]
         [SqlFk("customer", "uuid", SqlFkTypes.ON_DELETE_CASCADE_ON_UPDATE_NO_ACTION_NOT_NULL)]
@@ -26,7 +27,7 @@ namespace ConsoleApp.Tables.Sale
         public Guid? CustomerGuid { get; set; }
 
         [SqlJoinType("sales", "customer_fk", SqlJoinTypes.INNER)]
-        public Customer.Model Customer { get; set; } = new Customer.Model();
+        public Customer Customer { get; set; } = new Customer();
 
         [Column("partner_fk")]
         [SqlFk("partner", "uuid", SqlFkTypes.ON_DELETE_CASCADE_ON_UPDATE_NO_ACTION)]
@@ -34,6 +35,6 @@ namespace ConsoleApp.Tables.Sale
         public Guid? PartnerGuid { get; set; }
 
         [SqlJoinType("sales", "partner_fk", SqlJoinTypes.LEFT)]
-        public Partner.Model Partner { get; set; } = new Partner.Model();
+        public Partner Partner { get; set; } = new Partner();
     }
 }

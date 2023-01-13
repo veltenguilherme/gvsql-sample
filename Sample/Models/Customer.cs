@@ -3,10 +3,10 @@ using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Tables.Partner
+namespace ConsoleApp.Models
 {
-    [Table("partner")]
-    public class Model : Model<Model>
+    [Table("customer")]
+    public class Customer : Model<Customer>
     {
         [Column("nick_name")]
         [SqlType(SqlTypes.TEXT_NOT_NULL_UNIQUE)]
@@ -17,7 +17,7 @@ namespace ConsoleApp.Tables.Partner
         [SqlType(SqlTypes.GUID)]
         public Guid? PersonGuid { get; set; }
 
-        [SqlJoinType("partner", "person_fk", SqlJoinTypes.INNER)]
-        public Person.Model Person { get; set; } = new Person.Model();
+        [SqlJoinType("customer", "person_fk", SqlJoinTypes.INNER)]
+        public Person Person { get; set; } = new Person();
     }
 }

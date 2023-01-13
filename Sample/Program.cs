@@ -1,4 +1,6 @@
-﻿using Persistence;
+﻿using ConsoleApp.Models;
+using ConsoleApp.Tables;
+using Persistence;
 using Persistence.Controllers.Base.Queries;
 using System;
 using System.Collections.Generic;
@@ -23,11 +25,11 @@ namespace ConsoleApp
             var partner = InsertPartner().Result;
             var sale = InsertSale().Result;
 
-            var persons = new Tables.Person.Table().ToListAsync(new Query<Tables.Person.Model>(x => x.FirstName == user.Person.FirstName)).Result;
-            var users = new Tables.User.Table().ToListAsync(new Query<Tables.User.Model>(x => x.Person.FirstName == user.Person.FirstName)).Result;
-            var customers = new Tables.Customer.Table().ToListAsync(new Query<Tables.Customer.Model>(x => x.Person.FirstName == partner.Person.FirstName)).Result;
-            var patners = new Tables.Partner.Table().ToListAsync(new Query<Tables.Partner.Model>(x => x.Person.FirstName == customer.Person.FirstName)).Result;
-            var sales = new Tables.Sale.Table().ToListAsync(new Query<Tables.Sale.Model>(x => x.Partner.Person.FirstName == sale.User.Person.FirstName)).Result;
+            var persons = new Persons().ToListAsync(new Query<Person>(x => x.FirstName == user.Person.FirstName)).Result;
+            var users = new Users().ToListAsync(new Query<User>(x => x.Person.FirstName == user.Person.FirstName)).Result;
+            var customers = new Customers().ToListAsync(new Query<Customer>(x => x.Person.FirstName == partner.Person.FirstName)).Result;
+            var patners = new Partners().ToListAsync(new Query<Partner>(x => x.Person.FirstName == customer.Person.FirstName)).Result;
+            var sales = new Sales().ToListAsync(new Query<Sale>(x => x.Partner.Person.FirstName == sale.User.Person.FirstName)).Result;
         }
 
         private static List<Structure> GetSchema()
@@ -36,35 +38,34 @@ namespace ConsoleApp
             {
                 new Structure()
                 {
-                    Model =  typeof(Tables.Person.Model),
-                    Table = typeof(Tables.Person.Table)
+                    Model =  typeof(Person),
+                    Table = typeof(Persons)
                 },
                 new Structure()
                 {
-                    Model =  typeof(Tables.User.Model),
-                    Table = typeof(Tables.User.Table)
+                    Model =  typeof(User),
+                    Table = typeof(Users)
                 },
                 new Structure()
                 {
-                    Model =  typeof(Tables.Customer.Model),
-                    Table = typeof(Tables.Customer.Table)
+                    Model =  typeof(Customer),
+                    Table = typeof(Customers)
                 },
                 new Structure()
                 {
-                    Model =  typeof(Tables.Partner.Model),
-                    Table = typeof(Tables.Partner.Table)
+                    Model =  typeof(Partner),
+                    Table = typeof(Partners)
                 },
                 new Structure()
                 {
-                    Model =  typeof(Tables.Sale.Model),
-                    Table = typeof(Tables.Sale.Table)
+                    Model =  typeof(Sale),
+                    Table = typeof(Sales)
                 }
             };
         }
-
-        private static async Task<Tables.User.Model> InsertUser()
+        private static async Task<User> InsertUser()
         {
-            return await new Tables.User.Table().UpdateOrInsertAsync(new Tables.User.Model()
+            return await new Users().UpdateOrInsertAsync(new User()
             {
                 NickName = Guid.NewGuid().ToString(),
                 Password = "123",
@@ -72,27 +73,27 @@ namespace ConsoleApp
             });
         }
 
-        private static async Task<Tables.Customer.Model> InsertCustomer()
+        private static async Task<Customer> InsertCustomer()
         {
-            return await new Tables.Customer.Table().UpdateOrInsertAsync(new Tables.Customer.Model()
+            return await new Customers().UpdateOrInsertAsync(new Customer()
             {
                 NickName = Guid.NewGuid().ToString(),
                 PersonGuid = InsertPerson().Result?.Guid
             });
         }
 
-        private static async Task<Tables.Partner.Model> InsertPartner()
+        private static async Task<Partner> InsertPartner()
         {
-            return await new Tables.Partner.Table().UpdateOrInsertAsync(new Tables.Partner.Model()
+            return await new Partners().UpdateOrInsertAsync(new Partner()
             {
                 NickName = Guid.NewGuid().ToString(),
                 PersonGuid = InsertPerson().Result?.Guid
             });
         }
 
-        private static async Task<Tables.Sale.Model> InsertSale()
+        private static async Task<Sale> InsertSale()
         {
-            return await new Tables.Sale.Table().UpdateOrInsertAsync(new Tables.Sale.Model()
+            return await new Sales().UpdateOrInsertAsync(new Sale()
             {
                 Code = 1,
                 UserGuid = InsertUser().Result?.Guid,
@@ -101,15 +102,15 @@ namespace ConsoleApp
             });
         }
 
-        private static async Task<Tables.Person.Model> InsertPerson()
+        private static async Task<Person> InsertPerson()
         {
-            return await new Tables.Person.Table().UpdateOrInsertAsync(new Tables.Person.Model()
+            return await new Persons().UpdateOrInsertAsync(new Person()
             {
                 FirstName = "Guilherme",
                 LastName = "Velten",
                 Birth = new DateTime(1993, 09, 14),
                 Age = DateTime.Now.Year - new DateTime(1993, 09, 14).Year,
-                Sex = Tables.Person.EnmSex.MALE
+                Sex = EnmSex.MALE
             });
         }
     }

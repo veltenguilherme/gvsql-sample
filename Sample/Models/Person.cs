@@ -1,12 +1,13 @@
-﻿using Persistence.Controllers.Base.CustomAttributes;
+﻿using ConsoleApp.Tables;
+using Persistence.Controllers.Base.CustomAttributes;
 using Persistence.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp.Tables.Person
+namespace ConsoleApp.Models
 {
     [Table("person")]
-    public class Model : Model<Model>
+    public class Person : Model<Person>
     {
         [Column("first_name")]
         [SqlType(SqlTypes.TEXT_NOT_NULL)]
