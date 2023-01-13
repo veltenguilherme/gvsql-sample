@@ -10,7 +10,12 @@ namespace ConsoleApp
     {
         private static void Main(string[] args)
         {
-            new Database("localhost", 5432, "sample", "postgres", "123Mudar").Create(GetSchema());
+            new Database(hostName: "localhost",
+                         port: 5432,
+                         name: "sample",
+                         userName: "postgres",
+                         password: "123Mudar",
+                         schema: GetSchema());
 
             var person = InsertPerson().Result;
             var user = InsertUser().Result;
@@ -24,7 +29,7 @@ namespace ConsoleApp
             var patners = new Tables.Partner.Table().ToListAsync(new Query<Tables.Partner.Model>(x => x.Person.FirstName == customer.Person.FirstName)).Result;
             var sales = new Tables.Sale.Table().ToListAsync(new Query<Tables.Sale.Model>(x => x.Partner.Person.FirstName == sale.User.Person.FirstName)).Result;
         }
-        
+
         private static List<Structure> GetSchema()
         {
             return new List<Structure>()

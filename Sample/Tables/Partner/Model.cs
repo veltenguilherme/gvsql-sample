@@ -9,15 +9,15 @@ namespace ConsoleApp.Tables.Partner
     public class Model : Model<Model>
     {
         [Column("nick_name")]
-        [TypeInfo(DataType.TEXT_NOT_NULL_UNIQUE)]
+        [SqlType(SqlTypes.TEXT_NOT_NULL_UNIQUE)]
         public string NickName { get; set; }
 
         [Column("person_fk")]
-        [Fk("person", "uuid", FkType.ON_DELETE_CASCADE_ON_UPDATE_NO_ACTION_NOT_NULL)]
-        [TypeInfo(DataType.GUID)]
+        [SqlFk("person", "uuid", SqlFkTypes.ON_DELETE_CASCADE_ON_UPDATE_NO_ACTION_NOT_NULL)]
+        [SqlType(SqlTypes.GUID)]
         public Guid? PersonGuid { get; set; }
 
-        [Persistence.Controllers.Base.CustomAttributes.JoinType("partner", "person_fk", Persistence.Models.JoinType.INNER)]
+        [SqlJoinType("partner", "person_fk", SqlJoinTypes.INNER)]
         public Person.Model Person { get; set; } = new Person.Model();
     }
 }
